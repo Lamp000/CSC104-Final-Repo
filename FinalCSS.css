@@ -30,6 +30,9 @@ body{
     border-radius: 30px;
     background-color: black;       
 }
+.Boards:hover{
+    background-color: whitesmoke;
+}
 .Character{
     position:absolute;
     height:70vh;

@@ -58,6 +58,21 @@ function setFactionLocation(){
         }
     }
 }
+let flipped=2;
+function flipBoard(){
+    if(flipped==1){
+        flipped=2;
+    }
+    else{
+        flipped=1;
+    }
+}
+function setBoards(){
+    for(let k=0; k<arrFactionAmount; k++){
+        let currentBoard = document.getElementById("board"+k);
+        currentBoard.setAttribute("src", "Board"+arrFactions[k]+flipped+".png");
+    }
+}
 
 let audioElem = document.createElement("audio");
 audioElem.setAttribute("id", "myAudio");
@@ -99,4 +114,5 @@ setInterval(function(){
     changeBGC();
     setButtonLocation();
     setFactionLocation();
+    setBoards();
 },10);
