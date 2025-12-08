@@ -1,9 +1,9 @@
 body{
     position:absolute;
-    height:100%;
+    height:100vh;
     margin:0;
     padding:0;
-    width:100%;
+    width:100vw;
     overflow-x:hidden;
 }
 
@@ -17,26 +17,35 @@ body{
 .ButtonClass:hover{
     position:absolute;
     background-color:rgb(255, 255, 255);
-    margin:0%;
-    padding: 0.5%;
+    margin:0.1%;
+    padding: 0.4%;
 }
 .Boards{
     position:absolute;
-    width:100vh;
-    top:3vh;
-    min-width:400px;
-    left: 3vh; 
-    padding: 4px;
     border-radius: 30px;
+    padding:4px;
+    width:100%;
+    height:100%;
+    left:0%;
+    top:0%;
+    margin:0%;
     background-color: black;       
 }
 .Boards:hover{
-    background-color: whitesmoke;
+    background-color: rgb(100, 100, 100);
 }
 .Character{
     position:absolute;
-    height:70vh;
-    transform:translate(-90%,0);
-    top:20vh;
-    left:95vw;
+    top:min(12vh,12vw);
+    left:calc(min(5vh,5vw) + ( 100vw - min(3vh,3vw) - min(100vh,55vw) - min(30vw,60vh) )/2 + min(100vh,55vw));
+    width:min(30vw,60vh);
+    height:min(30vw,60vh);
+}
+.buttons{
+    background-color:rgba(255, 0, 0, 0);
+    border-color: white;
+    color: rgb(0, 185, 194);
+}
+.buttons:hover{
+    background-color:rgba(255, 255, 255, 0.256);
 }
