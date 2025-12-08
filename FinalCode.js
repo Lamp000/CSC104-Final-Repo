@@ -3,7 +3,7 @@ let arrColorRed = [205,58,96,161,243,91,146,144,225,125];
 let arrColorGreen = [111,102,173,161,233,195,59,92,34,125];
 let arrColorBlue = [50,165,79,161,48,186,49,164,50,125];
 // Factions names. Used for quickly referencing html elements in for loops
-let arrFactions = ["Cat", "Bird", "Toast", "VB", "Lizard", "Otter", "Mole", "Crow", "Rat", "Keeper"];
+let arrFactions = ["Cat", "Bird", "Toast", "VB","Lizard", "Otter", "Mole", "Crow", "Rat", "Keeper"];
 let arrFactionAmount = 10;
 
 // These are a quick way for me to set the Top, Left, Width, and Height of a button (%). These have functionality and do something based off of their number in the list
@@ -11,10 +11,10 @@ let arrCatButton = [
     [3.5,36,16,5.5, 1],
     [3.5,47.5,18,3.5, 1],
     [3.5,51,36,4, 1],
-    [4.5,55,8.5,3, 1],
-    [4.5,58.5,15,4.75, 1],
-    [4.5,63.5,30,5, 1],
-    [4.5,68.75,35,7, 1],
+    [4.5,55,8.5,3.5, 1],
+    [4.5,58.5,15,5, 1],
+    [4.5,63.5,30,5.25, 1],
+    [4.5,68.75,35,7.25, 1],
     [4.5,76,34.5,7, 1],
     [3.5,89.5,39.5,4, 1],
     [45,28.5,51,42, 1],
@@ -22,7 +22,6 @@ let arrCatButton = [
     [46.25,38.5,49,10.5, 1],
     [46.25,49,49,10.5, 1],
     [46.25,59.5,49,10.5, 1],
-    [4,60,43,37.5, 2],
     [4.5,65,42,6, 2],
     [4.5,71,42,9, 2],
     [4.5,80,42,8.5, 2],
@@ -55,11 +54,9 @@ let arrBirdButton = [
 let arrToastButton=[
     [2.75,32.5,30,11, 1],
     [2.75,43.5,31,8, 1],
-    [35,32.5,30,19, 1],
     [35.5,34.5,18,3.5, 1],
     [35.5,38,29,5.5, 1],
     [35.5,43.5,26.5,7, 1],
-    [65.5,33,30,12.5, 1],
     [69,36.5,12,3, 1],
     [69,39.5,12,4.5, 1],
     [81,36.5,12,3, 1],
@@ -70,7 +67,6 @@ let arrToastButton=[
     [30,65.5,41,7, 1],
     [71,54,25.5,18.5, 1],
     [27,74.5,72,19.5, 1],
-    [27,94,27,5.5, 1],
     [54,94,45,5.5, 1],
     [2.5,67,42,12, 2]
 ];
@@ -95,6 +91,7 @@ let arrRatButton=[
 let arrKeeperButton=[
     [3.5,36,16,5.5, 1]
 ];
+
 // These tell the buttons which ones they should highlight
 let arrCatHighlight = [
     [10,11],
@@ -105,7 +102,6 @@ let arrCatHighlight = [
     [13],
     [9],
     [11],
-    [],
     [],
     [],
     [],
@@ -142,29 +138,29 @@ let arrBirdHighlight = [
     [],
 ];
 let arrToastHighlight=[
-    [],
-    [],
-    [],
-    [35.5,34.5,18,3.5, 1],
-    [12],
-    [15],
-    [15],
-    [69,36.5,12,3, 1],
-    [69,39.5,12,4.5, 1],
-    [81,36.5,12,3, 1],
-    [81,39.5,12,5.5, 1],
-    [65.5,45.5,28,5.5, 1],
-    [],
-    [0,6],
+    [10,11,14,15],
+    [0,2,10,14],
+    [14],
+    [10],
     [13],
-    [5,6],
-    [27,74.5,72,19.5, 1],
-    [27,94,27,5.5, 1],
-    [54,94,45,5.5, 1],
-    [2.5,67,42,12, 2]
+    [],
+    [],
+    [],
+    [14],
+    [],
+    [0,1,3,14,15],
+    [0,5,6,7,8],
+    [11],
+    [4,5,6,7,8],
+    [],
+    [],
+    [],
+    [],
+    []
 ];
+
 // Current number for faction. Is a float so I can adjust things fluidly rather than rigid
-let factionCurrent = 2;
+let factionCurrent = 0;
 // Faction 1 and 2 are to show the current factions that factionCurrent is floating between
 let faction1 = factionCurrent;
 let faction2 = factionCurrent;
@@ -173,12 +169,13 @@ let goal = factionCurrent;
 
 let activeGif = 0;
 function gifChoose(number){
+// set the current gif# when a button is clicked
     if(number==activeGif){
         highlightButton(-1);
         activeGif = 0;
     }
     else{
-        console.log(number-1+145,number-1);
+        console.log(number-1+141,number-1);
         highlightButton(number-1);
         activeGif = number;
         showButtons(number-1);
@@ -186,6 +183,7 @@ function gifChoose(number){
     
 }
 function highlightButton(number){
+// highlight the current selected button
     for(let i=0; i<eval("arr"+arrFactions[Math.round(factionCurrent)]+"Button").length; i++){
         let Selected=document.getElementById("button"+arrFactions[Math.round(factionCurrent)]+i);
         if(i==number){
@@ -201,18 +199,22 @@ function highlightButton(number){
     }
 }
 function showButtons(number){
+// pick buttons to highlight when other buttons are clicked (for related actions on the boards)
 let currentListHighlight = eval("arr"+arrFactions[Math.round(factionCurrent)]+"Highlight")[number];
     for(let i=0; i<currentListHighlight.length; i++){
         let Selected=document.getElementById("button"+arrFactions[Math.round(factionCurrent)]+currentListHighlight[i]);
+
         Selected.style.backgroundColor="rgb(0,185,200,0.35)";
-        Selected.addEventListener("mouseover", function(){Selected.style.backgroundColor="rgb(0,185,200,0.2)";})
-        Selected.addEventListener("mouseleave", function(){Selected.style.backgroundColor="rgb(0,185,200,0.35)";})
+
+        Selected.addEventListener("mouseover", function(){Selected.style.backgroundColor="rgb(0,185,200,0.2)";});
+
+        Selected.addEventListener("mouseleave", function(){Selected.style.backgroundColor="rgb(0,185,200,0.35)";});
     }
 }
 for(let i=0; i<arrFactionAmount; i++){
     // NME is the arrays above that correspond to each faction board's buttons
     let NME = eval("arr"+arrFactions[i]+"Button");
-        // This is to set the Faction board to the correct spot
+        // DivFaction stuff is for me to set the Faction board to the correct spot
         let DivFaction = document.getElementById("buttons"+arrFactions[i]);
         DivFaction.style.position = "absolute";
         DivFaction.style.top= "min(3vh,3vw)";
@@ -222,6 +224,7 @@ for(let i=0; i<arrFactionAmount; i++){
         DivFaction.style.width = "55vw";
         DivFaction.style.height = "42.4028vw";
     for(let j=0; j<NME.length; j++){
+        // BTN is a way to create button children within each faction's div "page", that way it's easier for me to make buttons on the faction boards
         let BTN = document.createElement("button");
         BTN.setAttribute("id", "button"+arrFactions[i]+j);
         BTN.setAttribute("class", "buttons "+"buttons"+(NME[j])[4]+" "+arrFactions[i]);
@@ -234,7 +237,6 @@ for(let i=0; i<arrFactionAmount; i++){
         document.getElementById("buttons"+arrFactions[i]).appendChild(BTN);
     }
 }
-
 changeBGC();
 // if the array number is a decimal, multiply the floored color of the list to 1-"the decimal" and the ceiled color multiplied by the decimal (makes a smooth fade color to color) 
 function adjustFactionColor(array){
@@ -249,8 +251,53 @@ function changeBGC(){
     // change the body background color
     document.getElementById("factionBody").style.backgroundColor = 'rgb('+bgColorRed+','+bgColorGreen+','+bgColorBlue+')';
 }
-                
+
+function setFactionLocation(){
+// sets the current div "page" to the correct one, showing the correct faction that needs displayed
+    for(let j=0; j<arrFactionAmount; j++){
+        let coolFaction = document.getElementById("div"+arrFactions[j]);
+        coolFaction.style.transform = "translate("+100*(j-factionCurrent)+"vw,0vh)";
+        
+        if(faction2==j){
+            coolFaction.style.opacity=(1-1.5*factionProg);
+        }
+        else{
+            coolFaction.style.opacity=(1.5*factionProg);
+        }
+    }
+}
+
+let flipped=1;
+function flipBoard(){
+    if(flipped==1){
+        // show front side of board
+        flipped=2;
+        gifChoose(0)
+    }
+    else{
+        // show backside of board
+        flipped=1;
+        gifChoose(0)
+    }
+}
+function setBoards(){
+    for(let k=0; k<arrFactionAmount; k++){
+        // using the flipped variable, sets whether or not the front or back should be seen
+        let currentBoard = document.getElementById("board"+k);
+        currentBoard.setAttribute("src", "Board"+arrFactions[k]+flipped+".png");
+        let Class1 = document.getElementsByClassName("buttons"+flipped);
+        let Class2 = document.getElementsByClassName("buttons"+(3-flipped));
+        for(let i=0; i<Class1.length; i++){
+            (Class1[i]).style.visibility="visible";
+        }
+        for(let i=0; i<Class2.length; i++){
+            (Class2[i]).style.visibility="hidden";
+        }
+    }
+}
+
 function setButtonLocation(){
+// set the locations of the buttons on the bottom of the page
     for(let i=0; i<arrFactionAmount; i++){
         let ButtonCurrentFaction = document.getElementById("button" + i);
         if(i==faction1){
@@ -268,46 +315,8 @@ function setButtonLocation(){
         ButtonCurrentFaction.style.left = 50+4*(i-factionCurrent)+"vw";
     }
 }
-
-function setFactionLocation(){
-    for(let j=0; j<arrFactionAmount; j++){
-        let coolFaction = document.getElementById("div"+arrFactions[j]);
-        coolFaction.style.transform = "translate("+100*(j-factionCurrent)+"vw,0vh)";
-        if(faction2==j){
-            coolFaction.style.opacity=(1-1.5*factionProg);
-        }
-        else{
-            coolFaction.style.opacity=(1.5*factionProg);
-        }
-    }
-}
-
-let flipped=1;
-function flipBoard(){
-    if(flipped==1){
-        flipped=2;
-        highlightButton(-1)
-    }
-    else{
-        flipped=1;
-    }
-}
-function setBoards(){
-    for(let k=0; k<arrFactionAmount; k++){
-        let currentBoard = document.getElementById("board"+k);
-        currentBoard.setAttribute("src", "Board"+arrFactions[k]+flipped+".png");
-        let Class1 = document.getElementsByClassName("buttons"+flipped);
-        let Class2 = document.getElementsByClassName("buttons"+(3-flipped));
-        for(let i=0; i<Class1.length; i++){
-            (Class1[i]).style.visibility="visible";
-        }
-        for(let i=0; i<Class2.length; i++){
-            (Class2[i]).style.visibility="hidden";
-        }
-    }
-}
-
 for(let o=0; o<arrFactionAmount; o++){
+    // sets the background of the mini buttons on the bottom
     let c1 = arrColorRed[o];
     let c2 = arrColorGreen[o];
     let c3 = arrColorBlue[o];
@@ -319,11 +328,13 @@ for(let o=0; o<arrFactionAmount; o++){
 // Faction target sets the current "goal" faction of a specific number
 function factionTarget(number){
     goal=number;
-    highlightButton(-1);
+    gifChoose(0)
     }
 
+// a global time interval. Useful for stuff like whether or not stuff could be visible and of course the background color
 setInterval(function(){
     if(Math.abs(goal - factionCurrent) <= 0.0015){
+        // locks the div into place if it's close enough
         faction1 = goal;
         factionCurrent = faction1;
     }
@@ -331,6 +342,7 @@ setInterval(function(){
         let thing = 0.94+0.005*Math.abs(goal-factionCurrent);
         factionCurrent = thing*factionCurrent+(1-thing)*goal;
     }
+    // makes faction1 go to the top if factionCurrent is below 0,
     if(factionCurrent < 0){
         faction1 = arrFactionAmount + factionCurrent;
     }
@@ -340,8 +352,18 @@ setInterval(function(){
     factionProg = faction1%1;
     faction2 = Math.floor(faction1);
     faction1 = Math.ceil(faction1)%arrFactionAmount;
+    // functions that change stuff based on factionCurrent, faction1, and faction2
     changeBGC();
     setButtonLocation();
     setFactionLocation();
     setBoards();
+    // 
+    if(activeGif>0){
+        document.getElementById("Ginfo").style.visibility="visible";
+        document.getElementById("example").setAttribute("src", ["Board","Character","Symbol"][activeGif-1]+arrFactions[Math.round(factionCurrent)]+["1","",""][activeGif-1]+".png");
+        document.getElementById("description").textContent= "this is awesome because it is "+arrFactions[Math.round(factionCurrent)]+"'s button #"+activeGif;
+    }
+    else{
+        document.getElementById("Ginfo").style.visibility="hidden";
+    }
 },1000/60);

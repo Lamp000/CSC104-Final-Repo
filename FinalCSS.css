@@ -36,15 +36,41 @@ body{
 }
 .Character{
     position:absolute;
-    top:min(12vh,12vw);
+    top:min(9vh,9vw);
     left:calc(min(5vh,5vw) + ( 100vw - min(3vh,3vw) - min(100vh,55vw) - min(30vw,60vh) )/2 + min(100vh,55vw));
     width:min(30vw,60vh);
     height:min(30vw,60vh);
 }
+#Ginfo{
+    position:absolute;
+    top:calc(min(3vh,3vw) + 0.025 * min(77.096vh,42.028vw));
+    left:calc(min(3vh,3vw) + min(100vh,55vw) + 0.025 * (100vw - min(3vh,3vw) - min(100vh,55vw)));
+    width:calc(0.95 * (100vw - min(3vh,3vw) - min(100vh,55vw)));
+    height:fit-content;
+    background-color:rgb(240, 248, 255,0.3);
+    border-color:black;
+    border-radius: 1vh;
+}
+#description{
+    background-color: rgb(240,240,255,0.7);
+    padding:0.5%;
+    margin: 10px;
+    max-height:30%;
+    font-size:1cqw;
+    width:calc(100% - 20px - 0.5%);
+}
+#example{
+    position:relative;
+    margin:3%;
+    margin-top:0px;
+    margin-bottom:10px;
+    border-radius: 5px;
+    width:calc(100% - 6%);
+    max-width:65vh;
+}
 .buttons{
     background-color:rgba(255, 0, 0, 0);
     border-color: white;
-    color: rgb(0, 185, 194);
 }
 .buttons:hover{
     background-color:rgba(255, 255, 255, 0.256);
