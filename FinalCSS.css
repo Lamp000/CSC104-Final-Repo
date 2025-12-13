@@ -1,3 +1,124 @@
+.AwesomeButtons:hover{
+    color:rgb(255, 0, 0);
+    background-color:rgb(216, 216, 255);
+}
+.AwesomeButtons{
+    background-color: rgb(255, 255, 255);
+    padding:3px;
+    border-radius: 5px;
+    height:fit-content;
+    width:fit-content;
+}
+a{
+    text-decoration: none;
+}
+table{
+    background-color: black;
+    padding:0px;
+}
+/* Navigation panel stuff */
+header{
+    position:absolute;
+    background-color: rgba(62, 62, 62, 0.507);
+    padding:15px;
+    margin-left: 70%;
+}
+header a{
+    background-color: rgb(0, 0, 0);
+    color:white;
+    padding:5px;
+    border-radius: 5px;
+    margin:5px;
+    font-weight:normal;
+    text-decoration: none;
+}
+#current{
+    background-color: blue;
+    color:white;
+    font-weight:bold;
+    font-size:110%;
+}
+#current:hover{
+    background-color: rgb(155, 255, 255);
+    color:rgb(0, 0, 0);
+}
+header a:hover{
+    background-color: rgb(155, 255, 255);
+    color:rgb(0, 0, 0);
+}
+#MAIN{
+    background-color: blueviolet;
+}
+#RULES{
+    background-color: rgb(101, 25, 25);
+}
+/* Main page */
+#logo{
+    width:50%;
+    margin:30px;
+}
+#LawOfRoot{
+    position:absolute;
+    left:50%;
+    top:22%;
+}
+#john_button{
+    font-size:large;
+}
+#LawOfIMAGE{
+    position:absolute;
+    left:65%;
+    top:18%;
+    width:20%;
+    background-color:white;
+    transform:rotate(15deg);
+}
+#LawOfIMAGE img{
+    position:absolute;
+    left:0%;
+    top:0%;
+    width:50%;
+}
+#RuleTable{
+    background-color: black;
+    width:70%;
+    height:calc(100vh - 80px - (50vw * 754 / 1866));
+    padding:2px;
+    margin:10px;
+    font-size: large;
+    text-align: center;
+}
+#FactionTable{
+    position:absolute;
+    left:75%;
+    margin:30px;
+    top:5%;
+    text-align: center;
+    height:87%;
+    width: calc(20% - 60px);
+    background-color: black;
+    padding:3px;
+}
+#FactionTable div{
+    font-size:calc(1cqw + 1cqh);
+}
+#FactionTitle{
+    height:0px;
+    font-weight: bolder;
+    font-size:30px;
+    background-color: rgb(255, 142, 142);
+}
+#TableTitle{
+    font-size:150%;
+    background-color:rgb(0, 255, 255);
+    height:10%;
+}
+#listItems{
+    height:90%;
+}
+body table tr{
+    background-color:white;
+}
 body{
     position:absolute;
     height:100vh;
@@ -6,7 +127,13 @@ body{
     width:100vw;
     overflow-x:hidden;
 }
-
+/* Rules page stuff */
+#NAVTABLE{
+    margin:10px;
+    text-align: center;
+    font-size:xx-large;
+}
+/* Factions stuff */
 .ButtonClass{
     position:absolute;
     border-radius: 30%;
@@ -29,10 +156,15 @@ body{
     left:0%;
     top:0%;
     margin:0%;
-    background-color: black;       
+    background-color: black;
+    user-select: none;  
 }
 .Boards:hover{
     background-color: rgb(100, 100, 100);
+    cursor:grab;
+}
+.Boards:active{
+    cursor:grabbing;
 }
 .Character{
     position:absolute;
@@ -43,7 +175,7 @@ body{
 }
 #Ginfo{
     position:absolute;
-    top:calc(min(3vh,3vw) + 0.025 * min(77.096vh,42.028vw));
+    top:calc(min(5vh,5vw) + 0.025 * min(77.096vh,42.028vw));
     left:calc(min(3vh,3vw) + min(100vh,55vw) + 0.025 * (100vw - min(3vh,3vw) - min(100vh,55vw)));
     width:calc(0.95 * (100vw - min(3vh,3vw) - min(100vh,55vw)));
     height:fit-content;
@@ -74,4 +206,5 @@ body{
 }
 .buttons:hover{
     background-color:rgba(255, 255, 255, 0.256);
+    cursor:pointer;
 }

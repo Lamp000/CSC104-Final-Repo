@@ -1,10 +1,10 @@
 // Faction colors, for bg
-let arrColorRed = [205,58,96,161,243,91,146,144,225,125];
-let arrColorGreen = [111,102,173,161,233,195,59,92,34,125];
-let arrColorBlue = [50,165,79,161,48,186,49,164,50,125];
+let arrColorRed = [205,58,96,161];//,243,91,146,144,225,125];
+let arrColorGreen = [111,102,173,161];//,233,195,59,92,34,125];
+let arrColorBlue = [50,165,79,161];//,48,186,49,164,50,125];
 // Factions names. Used for quickly referencing html elements in for loops
-let arrFactions = ["Cat", "Bird", "Toast", "VB","Lizard", "Otter", "Mole", "Crow", "Rat", "Keeper"];
-let arrFactionAmount = 10;
+let arrFactions = ["Cat", "Bird", "Toast", "VB"];//,"Lizard", "Otter", "Mole", "Crow", "Rat", "Keeper"];
+let arrFactionAmount = 4;
 
 // These are a quick way for me to set the Top, Left, Width, and Height of a button (%). These have functionality and do something based off of their number in the list
 let arrCatButton = [
@@ -161,11 +161,29 @@ let arrToastHighlight=[
 
 // Current number for faction. Is a float so I can adjust things fluidly rather than rigid
 let factionCurrent = 0;
+let awesomenumber = window.location.href.length;
+console.log(awesomenumber);
+let Letters="";
+let goal = factionCurrent;
+for(let i=0; i<15; i++){
+    awesomenumber-=1;
+    if(window.location.href[awesomenumber]=="#"){
+        for(let o=1; o<i-2; o++){
+            Letters=window.location.href[window.location.href.length-o]+Letters;
+        }
+        i=999
+        for(let i=0; i<arrFactionAmount; i++){
+            if(arrFactions[i]==Letters){
+                factionCurrent=i
+                goal=factionCurrent
+            }
+        }
+    }
+}
 // Faction 1 and 2 are to show the current factions that factionCurrent is floating between
 let faction1 = factionCurrent;
 let faction2 = factionCurrent;
 let factionProg = faction1%1;
-let goal = factionCurrent;
 
 let activeGif = 0;
 function gifChoose(number){
@@ -182,6 +200,7 @@ function gifChoose(number){
     }
     
 }
+
 function highlightButton(number){
 // highlight the current selected button
     for(let i=0; i<eval("arr"+arrFactions[Math.round(factionCurrent)]+"Button").length; i++){
