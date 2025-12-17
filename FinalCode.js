@@ -1,10 +1,10 @@
 // Faction colors, for bg
-let arrColorRed = [205,58,96,161];//,243,91,146,144,225,125];
-let arrColorGreen = [111,102,173,161];//,233,195,59,92,34,125];
-let arrColorBlue = [50,165,79,161];//,48,186,49,164,50,125];
+let arrColorRed = [205,58]//,96,161,243,91,146,144,225,125];
+let arrColorGreen = [111,102]//,173,161,233,195,59,92,34,125];
+let arrColorBlue = [50,165]//,79,161,48,186,49,164,50,125];
 // Factions names. Used for quickly referencing html elements in for loops
-let arrFactions = ["Cat", "Bird", "Toast", "VB"];//,"Lizard", "Otter", "Mole", "Crow", "Rat", "Keeper"];
-let arrFactionAmount = 4;
+let arrFactions = ["Cat", "Bird"]//, "Toast", "VB","Lizard", "Otter", "Mole", "Crow", "Rat", "Keeper"];
+let arrFactionAmount =2;
 
 // These are a quick way for me to set the Top, Left, Width, and Height of a button (%). These have functionality and do something based off of their number in the list
 let arrCatButton = [
@@ -46,7 +46,6 @@ let arrBirdButton = [
     [29.5,2,14.5,11.5, 1],
     [56.5,2,14.5,11.5, 1],
     [83.5,2,14.5,11.5, 1],
-    [3,62,44,33, 2],
     [4,69,42,10, 2],
     [4,79,42,5, 2],
     [4,84,42,10, 2],
@@ -135,7 +134,6 @@ let arrBirdHighlight = [
     [],
     [],
     [],
-    [],
 ];
 let arrToastHighlight=[
     [10,11,14,15],
@@ -159,10 +157,53 @@ let arrToastHighlight=[
     []
 ];
 
+// These are the descriptions for every button for each faction
+let arrCatDesc=[
+    "You place wood tokens on the board at every sawmill. Wood on the board is used to make buildings, and their cost is determined by their spot on the building track",
+    "You may craft cards in your hand if you want. The workshops you have on the board count as crafting pieces towards their own clearingsuit",
+    "Take any of the actions in any order with a limit of 3 + the number of Bird cards you spend to take additional actions. (Ex. Build->March->Battle-> spend a bird card for it's suit-> Recruit ) ",
+    "Choose an enemy in a clearing with Marquise de Cat warriors and start a battle. Attacker takes the higher roll while the defender takes lower",
+    "You can take up to two standard move actions. They do not have to be the same warrior, and if you wanted, you could choose to move only once instead of twice",
+    "This spawns a new Cat Warrior at every recruiter building out on the field. This can only be done once per turn.",
+    "If you rule the clearing, you can build. You spend it's cost in wood currently on the map. The clearings with wood need to be connected by any number of clearings you rule. The cost of each building that you want to build is determined by the leftmost building of each track and the cost at the top. (Ex. if you have no sawmills, sawmills cost 0. if you have 5 Sawmills, the last one costs 4)",
+    "You spend a card for it's suit and then place a wood at a matching sawmill.",
+    "Draw cards. At 3 Recruiters on the map and 5 recruiters on the map there is a card symbol that is obscured unless you have the correct amount built. These card symbols add to your card draw at the end of your turn. If you have more than 5 cards, discard down to 5 cards.",
+    "This is your building track. This is THE most important thing on the board, as placing buildings directly allows for scoring points. Each building does something different for you",
+    "This is the wood cost of the buildings below. 0 buildings of a type costs 0 wood to build that building, but building the last building on a track would cost 4.",
+    "These are sawmills. These are your fundamental building, as more sawmills build allows for more places wood gets spawned at birdsong and suits to overwork with. The more sawmills you have, the faster you can get all of your buildings down and score points",
+    "These are workshops. The more workshops you have, the more you can craft at the start of your daylight. You shouldn't focus on crafting, as it takes up building slots for things like sawmills and recruiters, but if you can score a lot of points from crafting, it may just be worth it.",
+    "These are Recruiters. These directly increase how many Cat Warriors are spawned when you take the Recruit action in daylight. Late-game, it gets outclassed by field hospitals, but it takes recruiters to get your full supply of warriors on the board to make Field Hospitals good.",
+    "Your Keep token is arguably your most important building. It means people cannot build in your clearing, as well as that it allows for fantastic Late-Game recruiting.",
+    "You start out the game with influence over the entire board. You get a Cat in almost every single clearing, which allows you to build pretty much wherever. Unfortunately, 1 cat is just slightly weak, so be careful.",
+    "You start the game with 1 of each type of building, which allows your turn 1 to be used for building",
+    "Fill your build track on the front side with your buildings,",
+    "Nobody else can build in the clearing with the Keep, only you can build while the Keep is on the map",
+    "Whenever you lose warriors in battle (whether as attacker or defender), you can spend a card to spawn the lost warriors at your keep. This is useful for not only reinforcing your keep, but also making sure you don't have to spend precious actions on recruiting"
+]
+let arrBirdDesc=[
+    "This ensures you have a card to add to the decree",
+    "Add a card to 1 of the columns above. You are REQUIRED to take EVERY action in the Decree. If you cannot you will Turmoil and lose your current leader. Bird cards are extremely valuable (because they count as every kind of suit), so you can only add 1 per turn.",
+    "This ensures that you can respawn if your Roosts get board wiped",
+    "Eyrie crafting is very poweful, but be careful of disdain for trade and whether it is worth it",
+    "You resolve the Decree. You are required to take every action, or else you Turmoil: you lose points, lose your decree, lose your current leader, and skip the rest of your actions that you would have taken.",
+    "For every Roost you have on the board, you automatically score. So if you have 2 Roosts, you only score 1... but if you have all out, you score 5 points",
+    "The more Roosts you have on the board means you draw more at the end of your turn. If you have less than 3 Roosts, you only draw 1. If you have 3, you draw 2. If you have 6, you draw 3. Then if you have more than 5 cards, you discard down to 5.",
+    "This is your Roost track. It is the most important thing on your board. It allows for better crafting, card draw, recruiting, and best of all, scoring.",
+    "This is Turmoil. When you cannot take an action in the Decree, you perform these actions. It is important to make sure the cards you add to your decree are going to make sure you don't Turmoil",
+    "You have 4 Eyrie Leaders. You can only have 1 at a time and each one has a different ability and different starting Bird Cards (Loyal Viziers) in the decree. You can see these leaders in the gif below",
+    "If you tie an opponent for Rule, you automatically rule. This is good for building",
+    "Your Disdain for Trade is a way to weaken your powerful crafting. The way you get around this is by using the Builder as your leader",
+    "This is the Recruit column. You Recruit 1 Bird Warrior at a matching Roost for every suit card you have here (Ex. Mouse Card, you recruit at a mouse suited Roost). The more cards you have here, the more you will recruit to complete the other actions in the Decree.",
+    "Thie is the Move column. You take a move action from each suit that is in the decree (Ex. Rabbit card, you move FROM Rabbit). You get to position your troops for the next two columns, battling and moving. You can also use the move column to reinforce roosts you want to protect",
+    "This is the Battle column. You do a battle in each suit clearing (Ex. Fox Card, you do a Battle in a Fox clearing). This can be used to slow down your enemies or clean up valuable buildings on the board",
+    "This is the Build column. You build in each suit clearing that you don't have a Roost already and that you rule (Ex. Mouse Card, Build in a Mouse clearing that does not already have a Roost). This powers you up for next turn, since more Roosts is better for you.",
+    "Pick a corner clearing. If someone has already setup (Marquise de Cat has setup A), do it diagonally opposite of them. Then you place 1 Roost and 6 Warriors there.",
+    "Set all leaders face up beside your board, pick one. This is your starting leader. Keep in mind that each leader starts with two Bird cards in the decree that you need to complete. (Loyal Viziers)",
+    "You flip your board, place your chosen leader on the leader slot, then place the Loyal Viziers in the columns that your leader has on it's card. Then you can fill your Roost track from right to left.",
+]
 // Current number for faction. Is a float so I can adjust things fluidly rather than rigid
 let factionCurrent = 0;
 let awesomenumber = window.location.href.length;
-console.log(awesomenumber);
 let Letters="";
 let goal = factionCurrent;
 for(let i=0; i<15; i++){
@@ -186,19 +227,23 @@ let faction2 = factionCurrent;
 let factionProg = faction1%1;
 
 let activeGif = 0;
+let gifChange=0
 function gifChoose(number){
 // set the current gif# when a button is clicked
+document.getElementById("example").setAttribute("src", arrFactions[Math.round(factionCurrent)]+activeGif+".gif");
     if(number==activeGif){
         highlightButton(-1);
         activeGif = 0;
     }
     else{
-        console.log(number-1+141,number-1);
         highlightButton(number-1);
         activeGif = number;
         showButtons(number-1);
+        document.getElementById("example").setAttribute("src", arrFactions[Math.round(factionCurrent)]+activeGif+".gif");
+        document.getElementById("Ginfo").style.visibility="visible";
+        document.getElementById("description").textContent= eval("arr"+arrFactions[Math.round(factionCurrent)]+"Desc")[activeGif-1];
     }
-    
+    gifChange=0
 }
 
 function highlightButton(number){
@@ -349,7 +394,6 @@ function factionTarget(number){
     goal=number;
     gifChoose(0)
     }
-
 // a global time interval. Useful for stuff like whether or not stuff could be visible and of course the background color
 setInterval(function(){
     if(Math.abs(goal - factionCurrent) <= 0.0015){
@@ -376,13 +420,8 @@ setInterval(function(){
     setButtonLocation();
     setFactionLocation();
     setBoards();
-    // 
-    if(activeGif>0){
-        document.getElementById("Ginfo").style.visibility="visible";
-        document.getElementById("example").setAttribute("src", ["Board","Character","Symbol"][activeGif-1]+arrFactions[Math.round(factionCurrent)]+["1","",""][activeGif-1]+".png");
-        document.getElementById("description").textContent= "this is awesome because it is "+arrFactions[Math.round(factionCurrent)]+"'s button #"+activeGif;
-    }
-    else{
+    if(activeGif==0){
         document.getElementById("Ginfo").style.visibility="hidden";
+        gifChange=0
     }
 },1000/60);

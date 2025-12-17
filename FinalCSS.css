@@ -133,6 +133,68 @@ body{
     text-align: center;
     font-size:xx-large;
 }
+#NAVTABLE td:hover{
+    cursor:pointer;
+}
+body button:hover{
+    cursor:pointer;
+}
+.blue{
+    background-color: rgb(142, 221, 255);
+}
+.blue:hover{
+    background-color: rgb(0, 179, 255);
+}
+.orange{
+    background-color: rgb(255, 210, 105);
+}
+.orange:hover{
+    background-color: rgb(255, 179, 0);
+}
+.white:hover{
+    background-color: white;
+}
+.RULES{
+    position:absolute;
+    left:5%;
+    top:20%;
+}
+.RULES button{
+    font-size:large;
+}
+.RULES button:hover{
+    font-size:large;
+}
+.divrules1{
+    position:absolute;
+    top:30%;
+    left: 8%;
+}
+#div2{
+    position:absolute;
+    top:36%;
+    right:11%;
+    left:11%;
+    bottom:20%;
+    padding:50px;
+    font-size:x-large;
+}
+#secDescription1{
+    position:absolute;
+    top:10%;
+    margin: 15px;
+    padding:5px;
+    background-color: white;
+}
+#secDescription2{
+    position:absolute;
+    top:23.5%;
+    left:5%;
+    margin:5px;
+    padding:5px;
+    right:20%;
+    background-color: white;
+}
 /* Factions stuff */
 .ButtonClass{
     position:absolute;
